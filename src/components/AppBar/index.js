@@ -13,30 +13,20 @@ import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import ImageList from "../ImageList";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    "& *": {
-      fontFamily: "'Josefin Sans', sans-serif",
-    },
   },
   appBar: {
-    color: "#000",
-    backgroundColor: "#F0FFFF",
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -94,6 +84,13 @@ const useStyles = makeStyles((theme) => ({
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
+      fontSize: 24,
+    },
+  },
+  listItemText: {
+    "& span": {
+      fontFamily: "'Great Vibes', cursive !important",
+      fontSize: 32,
     },
   },
   inputRoot: {
@@ -122,10 +119,6 @@ export default function CustomAppBar() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -194,6 +187,7 @@ export default function CustomAppBar() {
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
+        color="transparent"
       >
         <Toolbar>
           <IconButton
@@ -249,23 +243,12 @@ export default function CustomAppBar() {
         </div>
         <Divider />
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {["Asistencia", "Ubicación", "Fotos"].map((text) => (
             <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText
+                primary={text}
+                classes={{ root: classes.listItemText }}
+              />
             </ListItem>
           ))}
         </List>
@@ -279,8 +262,9 @@ export default function CustomAppBar() {
         <Typography align="center" variant="h1" gutterBottom>
           Bienvenid@
         </Typography>
-        <Typography align="center" variant="h2" paragraph>
-          Es un honor que formes parte de un evento tan importante en nuestras vidas.
+        <Typography align="center" variant="h3" paragraph>
+          Es un honor que formes parte de un evento tan importante en nuestras
+          vidas.
         </Typography>
       </main>
 
