@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import AppBar from "./components/AppBar";
+import Container from "./components/Container";
 
 function App() {
-  return <AppBar />;
+  return <Container />;
 }
 
 export default App;
